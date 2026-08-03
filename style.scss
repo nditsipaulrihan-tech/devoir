@@ -83,31 +83,21 @@ span{
       color: skyblue;
     }
   }
+
+ .cardd{
+  width: 100%;
+  max-width: 300px;
+ } 
 .card{
   background: white;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-  .img{
-    padding: 10px;
-    height: 200px;
-    width: 200px;
-
-    h2{
-      padding: 4px;
-      background: black;
-      color: white;
-      height: 100%;
-      width: 100%;
-      border-radius: 50%;
-      font-size: 1.4rem;
-    }
+  padding: 10px;
+  border-radius: .6rem;
+  width: 100%;
 
     .info{
       p{
-        padding: 2px;
-        margin-bottom: 4px;
+        padding: 4px;
+        margin-left: 8px;
         font-size: 1.3rem;
       }
     }

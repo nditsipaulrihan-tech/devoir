@@ -11,7 +11,7 @@ $conn = mysqli_connect($host, $name, $password, $database);
 if($conn){
 
 }else{
-  echo "Error: " . mysqli_connect_error();
+  echo "<script>alert('Unable To Reach Database');</script>";
 }
 
 ?>

@@ -3,44 +3,52 @@ session_start();
 
 include("connection.php");
 
-$error = $info = $pass =''; 
+$error = $info = $pass = '';
 
-if($_SERVER['REQUEST_METHOD']=='POST'){
-    $info = isset($_POST['info']) ? trim($_POST['info']) : '';
-    $pass = isset($_POST['zpassword']) ? $_POST['zpassword'] : '';
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $info = isset($_POST['info']) ? trim($_POST['info']) : '';
+  $pass = isset($_POST['zpassword']) ? $_POST['zpassword'] : '';
 
-    if(!empty($info)){
+  if (!empty($info)) {
 
-      $sql = "SELECT * FROM user_info WHERE email='$info';";
-      $result = mysqli_query($conn, $sql);
-      if(mysqli_fetch_row($result) > 0){
+    $sql = "SELECT * FROM user_info WHERE email='$info';";
+    $result = mysqli_query($conn, $sql);
 
-        if($row = mysqli_fetch_assoc($result)){
-          
-          if(password_verify($pass, $row['password'])){
-          $_SESSION['id']= $row['id'];
-          $_SESSION['name']= $row['name'];
-          $_SESSION['email']= $row['email'];
-          $_SESSION['number']= $row['number'];
+    $rows = mysqli_fetch_assoc($result);
 
-         if(!empty($error)){
-             $error = '';
-           } else{
+    if (!empty($rows)) {
+      $row = $rows;
+
+      if ($row) {
+
+        if (password_verify($pass, $row['password'])) {
+          echo 'it works';
+          $_SESSION['id'] = $row['id'];
+          $_SESSION['name'] = $row['name'];
+          $_SESSION['email'] = $row['email'];
+          $_SESSION['number'] = $row['number'];
+
+          if (!empty($error)) {
+            $error = '';
+          } else {
             mysqli_close($conn);
-          header("Location: index.php");
-          exit();}}else{
-            $error = "<span>Incorrect Password</span>";
-          }  
+            header("Location: index.php");
+            exit();
+          }
+        } else {
+          $error = "<span>Incorrect Password</span>";
+        }
 
-        }else{
-          $error = "<center><span>Incorrect Password</span></center>";
-        }}
-      } else{
-        $error = "<center><span>User Not Found</span></center>";
+      } else {
+        $error = "<center><span>Incorrect Password</span></center>";
       }
-      } else{
-        $error = "<center><span>Email Required</span></center>";
-      }
+    }
+  } else {
+    $error = "<center><span>User Not Found</span></center>";
+  }
+} else {
+  $error = "<center><span>Email Required</span></center>";
+}
 
 ?>
 
@@ -51,6 +59,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,24 +67,26 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
   <link rel="stylesheet" href="style.css">
   <title>Log In</title>
 </head>
+
 <body>
-  <!-- <?php // echo $_SESSION['update'];?> -->
-  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+  <!-- <?php // echo $_SESSION['update'];
+        ?> -->
+  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
     <h2>Log In</h2>
 
-    <?php echo $error;?>
+    <?php echo $error; ?>
 
     <div class="formg">
       <label for=""><b>Email:</b></label>
-      <input type="email" class="input" name="info" placeholder="example@gmail.com" value="<?php echo htmlspecialchars($info);?>">
+      <input type="email" class="input" name="info" placeholder="example@gmail.com" value="<?php echo htmlspecialchars($info); ?>">
     </div>
 
     <div class="formg">
       <label for=""><b>Password:</b></label>
-      <input type="password"  class="input" name="zpassword" placeholder="Password" id="lshow" maxlength="10" minlength="6">
-        <label for=""><input type="checkbox" name="" id="zshow">Show</label>
-        <a href="password.php">Forgot Password</a>
+      <input type="password" class="input" name="zpassword" placeholder="Password" id="lshow" maxlength="10" minlength="6">
+      <label for=""><input type="checkbox" name="" id="zshow">Show</label>
+      <a href="password.php">Forgot Password</a>
     </div>
 
     <button type="submit"><i class="fa-solid fa-user"></i> Log In</button><br><br>
@@ -84,4 +95,5 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
   <script src="script2.js"></script>
 </body>
+
 </html>

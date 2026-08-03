@@ -20,15 +20,14 @@ if(!($_SESSION['id'])){
   <title>Home Page</title>
 </head>
 <body>
-  <main>
+  <main class="cardd">
     <div class="card">
-      <div class="img">
-        <h2>ID: <?php echo $_SESSION['id'];?></h2>
-      </div>
-      <div class="info">
-        <p><b>Name:</b> <?php echo $_SESSION['name'];?></p>
-        <p><b>Email:</b> <?php echo $_SESSION['email'];?></p>
-        <p><b>Tell:</b> <?php echo $_SESSION['number'];?></p>
+        <div class="info">
+        <p><b>User ID:</b> <?php echo $_SESSION['id'];?></p><hr><br>
+        <p><b>Name:</b> <?php echo $_SESSION['name'];?></p><hr><br>
+        <p><b>Email:</b> <?php echo $_SESSION['email'];?></p><hr><br>
+        <p><b>Tell:</b> <?php echo $_SESSION['number'];?></p><hr><br>
+        <small style="color: grey;">&copy; User Informtion</small>
       </div>
     </div>
   </main>
