@@ -62,10 +62,17 @@ form{
 
 span{
     color: red;
-    text-align: center;
-    background: rgb(250, 138, 138);
-    padding: 4px auto;
-    
+    padding: 10px auto;  
+    margin-top: 4px;  
+    // text-align: center;
+    // background: rgba(246, 194, 194, 0.849);
+    // border-radius: .4em;
+    // text-shadow: 0 1px 2px black;
+  }
+
+  center{
+    width: 100%;
+    padding: 8px 0;
   }
 
 
@@ -76,17 +83,33 @@ span{
       color: skyblue;
     }
   }
+.card{
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 
+  .img{
+    padding: 10px;
+    height: 200px;
+    width: 200px;
 
-// input{
-//   &:user-valid{
-//   outline: green;
-//   }
-//   &:user-invalid{
-//   outline: red;
-//   }
-//   &:focus{
-//     border-color: gray;
-//     outline: none;
-//   }
-// }
+    h2{
+      padding: 4px;
+      background: black;
+      color: white;
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+      font-size: 1.4rem;
+    }
+
+    .info{
+      p{
+        padding: 2px;
+        margin-bottom: 4px;
+        font-size: 1.3rem;
+      }
+    }
+  }
+}

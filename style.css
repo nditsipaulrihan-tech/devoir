@@ -56,6 +56,13 @@ form button:hover {
 
 span {
   color: red;
+  padding: 10px auto;
+  margin-top: 4px;
+}
+
+center {
+  width: 100%;
+  padding: 8px 0;
 }
 
 a {
@@ -63,4 +70,30 @@ a {
 }
 a:visited, a:active {
   color: skyblue;
+}
+
+.card {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.card .img {
+  padding: 10px;
+  height: 200px;
+  width: 200px;
+}
+.card .img h2 {
+  padding: 4px;
+  background: black;
+  color: white;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  font-size: 1.4rem;
+}
+.card .img .info p {
+  padding: 2px;
+  margin-bottom: 4px;
+  font-size: 1.3rem;
 }/*# sourceMappingURL=style.css.map */
